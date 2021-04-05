@@ -1,21 +1,15 @@
 from django.urls import path
+from rest_framework import routers
 
-from .views import FarmerViewSet, TillageViewSet, LossCommunicationViewSet
+from .views import FarmerViewSet, TillageViewSet, CommunicationViewSet
 
 
-urlpatterns = [
-	path('farmers/', FarmerViewSet.as_view({
-        'get': 'list',
-        'post': 'create'
-    }), name='farmers'),
+router = routers.DefaultRouter()
 
-    path('tillages/', TillageViewSet.as_view({
-        'get': 'list',
-        'post': 'create'
-    }), name='tillages'),
+router.register('farmers', FarmerViewSet, basename='farmers')
+router.register('tillages', TillageViewSet, basename='tillages')
+router.register('communications', CommunicationViewSet, basename='communications')
 
-    path('loss-communications/', LossCommunicationViewSet.as_view({
-        'get': 'list',
-        'post': 'create'
-    }), name='loss-communications'),
-]
+urlpatterns = []
+
+urlpatterns += router.urls

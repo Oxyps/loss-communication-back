@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from .models import Farmer, Tillage, LossCommunication
+from .models import Farmer, Tillage, Communication
+from .choices import LOSS_CAUSES
 
 
 class FarmerSerializer(serializers.ModelSerializer):
@@ -13,7 +14,15 @@ class TillageSerializer(serializers.ModelSerializer):
         model = Tillage
         fields = '__all__'
 
-class LossCommunicationSerializer(serializers.ModelSerializer):
+class CommunicationReadSerializer(serializers.ModelSerializer):
+    farmer = FarmerSerializer(required=False, read_only=True)
+    tillage = TillageSerializer(required=False, read_only=True)
+
     class Meta:
-        model = LossCommunication
+        model = Communication
+        fields = '__all__'
+
+class CommunicationWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Communication
         fields = '__all__'

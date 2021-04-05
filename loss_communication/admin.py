@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from loss_communication.models import Farmer, Tillage, LossCommunication
+from loss_communication.models import Farmer, Tillage, Communication
 
-admin.site.register([Farmer, Tillage, LossCommunication])
+admin.site.register([Farmer, Tillage, Communication])
