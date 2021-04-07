@@ -4,7 +4,8 @@ from rest_framework.response import Response
 
 from .serializers import (
     FarmerSerializer,
-    TillageSerializer,
+    TillageReadSerializer,
+    TillageWriteSerializer,
     CommunicationReadSerializer,
     CommunicationWriteSerializer,
 )
@@ -22,19 +23,24 @@ def tillageLocationAlreadyExists(tillage_id):
 
     return len(existing_near_tillages) > 1
 
+
 class FarmerViewSet(viewsets.ModelViewSet):
-    queryset = Farmer.objects.all().order_by('name')
+    queryset = Farmer.objects.all().order_by('id')
     serializer_class = FarmerSerializer
 
-class TillageViewSet(viewsets.ModelViewSet):
-    queryset = Tillage.objects.all().order_by('type')
-    serializer_class = TillageSerializer
+class TillageViewSet(
+    ReadWriteSerializerMixin,
+    viewsets.ModelViewSet,
+):
+    queryset = Tillage.objects.all().order_by('id')
+    read_serializer_class = TillageReadSerializer
+    write_serializer_class = TillageWriteSerializer
 
 class CommunicationViewSet(
     ReadWriteSerializerMixin,
     viewsets.ModelViewSet,
 ):
-    queryset = Communication.objects.all().order_by('loss_cause')
+    queryset = Communication.objects.all().order_by('id')
     read_serializer_class = CommunicationReadSerializer
     write_serializer_class = CommunicationWriteSerializer
 
