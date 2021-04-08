@@ -1,6 +1,8 @@
 from rest_framework import viewsets, status
 from django.contrib.gis.measure import Distance
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
 
 from .serializers import (
     FarmerSerializer,
@@ -28,6 +30,11 @@ class FarmerViewSet(viewsets.ModelViewSet):
     queryset = Farmer.objects.all().order_by('id')
     serializer_class = FarmerSerializer
 
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ['id', 'name', 'cpf', 'email']
+    search_fields = ['id', '=name', 'cpf', 'email']
+
+
 class TillageViewSet(
     ReadWriteSerializerMixin,
     viewsets.ModelViewSet,
@@ -36,6 +43,12 @@ class TillageViewSet(
     read_serializer_class = TillageReadSerializer
     write_serializer_class = TillageWriteSerializer
 
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    search_fields = ['id', 'type', 'harvest_date']
+    filterset_fields = ['id', 'type', 'harvest_date']
+    search_fields = ['id', 'type', 'harvest_date']
+
+
 class CommunicationViewSet(
     ReadWriteSerializerMixin,
     viewsets.ModelViewSet,
@@ -43,6 +56,11 @@ class CommunicationViewSet(
     queryset = Communication.objects.all().order_by('id')
     read_serializer_class = CommunicationReadSerializer
     write_serializer_class = CommunicationWriteSerializer
+
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    search_fields = ['id', 'loss_cause']
+    filterset_fields = ['id', 'loss_cause']
+    search_fields = ['id', 'loss_cause']
 
     def create(self, request):
         serializer = self.get_serializer(data=request.data)
