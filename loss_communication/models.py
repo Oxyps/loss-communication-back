@@ -29,6 +29,7 @@ class Communication(models.Model):
     farmer = models.ForeignKey(Farmer, on_delete=models.PROTECT)
     tillage = models.ForeignKey(Tillage, on_delete=models.PROTECT)
     loss_cause = models.CharField(choices=LOSS_CAUSES, null=False, max_length=255)
+    is_dirty = models.BooleanField(null=False, default=False)
 
     class Meta:
         db_table = 'communication'
