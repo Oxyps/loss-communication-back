@@ -29,10 +29,15 @@
 		> pipenv install --dev
 	```
 
-1. Esta API utiliza uma biblioteca de geo-referenciamento para realizar a parte de localização das lavouras, sendo assim pode ser que seja necessário instalar algumas bibliotecas auxiliares para ser possível rodar o projeto em desenvolvimento.
-Caso o erro `Could not find gdal-config. Make sure you have installed the GDAL native library and development headers.` seja apresentado, na [documentação do Django](https://docs.djangoproject.com/en/3.1/ref/contrib/gis/install/) tem algumas instruções para baixar esses pacotes;
+1. Esta API utiliza uma biblioteca de geo-referenciamento para auxiliar na parte de localização das lavouras, sendo assim pode ser que seja necessário instalar algumas bibliotecas auxiliares para ser possível rodar o projeto em desenvolvimento.
+Caso o erro `Could not find gdal-config. Make sure you have installed the GDAL native library and development headers.` seja apresentado, é possível baixar as dependência faltantes pelo comando (Linux):
+	``` shell
+		> sudo apt install -y gdal-bin libgdal-dev libgeos-dev libproj-dev
+	```
 
-1. Acessando o seu banco de dados MySQL, deve ser criada uma tabela com o nome `loss_communication_db` ou dados referentes ao usuário, senha ou nome do BD devem ser alteradas no arquivo `/core/settings.py` na propriedade `DATABASES`; Para criar o banco utiliza-se:
+1. Caso utilize outro SO, na [documentação do Django](https://docs.djangoproject.com/en/3.1/ref/contrib/gis/install/) tem algumas instruções para baixar esses pacotes.
+
+1. Essa API utiliza o Banco de Dados MySQL, sendo assim deve ser criada uma tabela com o nome `loss_communication_db` ou os dados referentes ao usuário, senha ou nome do BD devem ser alteradas no arquivo `/core/settings.py` na propriedade `DATABASES`; Para criar o banco utiliza-se:
 	``` sql
 		> CREATE DATABASE loss_communication_db;
 	```
