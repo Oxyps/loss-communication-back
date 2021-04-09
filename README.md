@@ -1,4 +1,4 @@
-# [CRUD de Comunicação de Perdas](https://github.com/oxyps/loss-communication-back)
+# [CRUD de Comunicação de Perdas API](https://github.com/oxyps/loss-communication-back)
 
 ## Primeiros passos para rodar o projeto
 1. Clonar ou baixar o repositório do [projeto](https://github.com/oxyps/loss-communication-back);
@@ -52,33 +52,30 @@ Caso o erro `Could not find gdal-config. Make sure you have installed the GDAL n
 		> python manage.py runserver
 	```
 
-<!-- 1. Rodar o [frontend](https://github.com/Oxyps/product-frontend).
-
-1. Assegurar-se de inserir a porta da API no frontend `./src/services/api`. -->
 
 ## Rotas
 
 **Lavouras**
-* Listagem e cadastro de lavouras (GET e POST): `localhost:800/api/loss/tillages/`;
-* Detalhe, edição e exclusão de produto (GET, PUT, PATCH, DELETE): `localhost:800/api/loss/tillages/:id/`.
+* Listagem e cadastro de lavouras (GET e POST): `localhost:8000/api/loss/tillages/`;
+* Detalhe, edição e exclusão de produto (GET, PUT, PATCH, DELETE): `localhost:8000/api/loss/tillages/:id/`.
 * A filtragem do modelo lavoura pode ser realizada adicionando os query params `?id=1&type=Milho&harvest_date=2021-04-04` na rota de listagem.
 * As buscas podem ser feitas adicionando os query params `?search=Milho` na rota de listagem.
 
 **Agricultores**
-* Listagem e cadastro de agricultores (GET e POST): `localhost:800/api/loss/farmers/`;
-* Detalhe, edição e exclusão de agricultor (GET, PUT, DELETE): `localhost:800/api/loss/farmers/:id/`.
+* Listagem e cadastro de agricultores (GET e POST): `localhost:8000/api/loss/farmers/`;
+* Detalhe, edição e exclusão de agricultor (GET, PUT, DELETE): `localhost:8000/api/loss/farmers/:id/`.
 * A filtragem do modelo agricultor pode ser realizada adicionando os query params `?id=1&name=Abel&cpf=085&email=abel_castro_junior@hotmail.com` na rota de listagem.
 
 **Comunicações de perda**
-* Listagem e cadastro de comunicações (GET e POST): `localhost:800/api/loss/communications/`;
-* Detalhe, edição e exclusão de comunicação (GET, PUT, DELETE): `localhost:800/api/loss/communications/:id/`.
+* Listagem e cadastro de comunicações (GET e POST): `localhost:8000/api/loss/communications/`;
+* Detalhe, edição e exclusão de comunicação (GET, PUT, DELETE): `localhost:8000/api/loss/communications/:id/`.
 * A filtragem do modelo comunicação de perda pode ser realizada adicionando os query params `?id=1&loss_cause=DRY` na rota de listagem.
 
 **Buscas**
 * As buscas podem ser feitas adicionando o query param `?search=Qualquer+valor+a+ser+procurado` na rota de listagem do modelo.
 
 **Todas as rotas da API possuem uma interface gráfica fornecida pelo framework Django**
-* Para acessar o painel de administrador também fornecido pelo framework Django, é utilizada a rota `localhost:800/admin/`. Para tanto, é necessário que seja cadastrado um usuário administrador no BD, por meio do comando abaixo (estando na pasta raíz) e sejam seguidos os passos exibidos.
+* Para acessar o painel de administrador também fornecido pelo framework Django, é utilizada a rota `localhost:8000/admin/`. Para tanto, é necessário que seja cadastrado um usuário administrador no BD, por meio do comando abaixo (estando na pasta raíz) e sejam seguidos os passos exibidos.
 	``` shell
 		> python manage.py createsuperuser
 	```

@@ -32,7 +32,7 @@ class FarmerViewSet(viewsets.ModelViewSet):
 
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['id', 'name', 'cpf', 'email']
-    search_fields = ['id', '=name', 'cpf', 'email']
+    search_fields = ['id', 'name', 'cpf', 'email']
 
 
 class TillageViewSet(
@@ -44,7 +44,6 @@ class TillageViewSet(
     write_serializer_class = TillageWriteSerializer
 
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    search_fields = ['id', 'type', 'harvest_date']
     filterset_fields = ['id', 'type', 'harvest_date']
     search_fields = ['id', 'type', 'harvest_date']
 
@@ -58,9 +57,8 @@ class CommunicationViewSet(
     write_serializer_class = CommunicationWriteSerializer
 
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    search_fields = ['id', 'loss_cause']
-    filterset_fields = ['id', 'loss_cause']
-    search_fields = ['id', 'loss_cause']
+    filterset_fields = ['id', 'loss_cause', 'farmer__cpf']
+    search_fields = ['id', 'loss_cause', 'farmer__cpf']
 
     def create(self, request):
         serializer = self.get_serializer(data=request.data)
@@ -70,7 +68,7 @@ class CommunicationViewSet(
             serializer.validated_data.get('tillage').id
         ):
             return Response(
-                {'message': 'This tillage location may already exists.'},
+                {'message': 'this tillage location may already been registered.'},
                 status=status.HTTP_409_CONFLICT,
             )
 
