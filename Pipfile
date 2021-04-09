@@ -11,6 +11,7 @@ django-cpf = "*"
 django-cors-headers = "*"
 django-filter = "*"
 django-heroku = "*"
+opencv-python-headless = "==4.2.0.32"
 
 [dev-packages]
 
