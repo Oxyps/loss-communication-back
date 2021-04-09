@@ -1,9 +1,9 @@
-# [CRUD de Comunicação de Perdas API](https://github.com/oxyps/loss-communication-back)
+# [Comunicação de Perdas API](https://github.com/oxyps/loss-communication-back)
 
 ## Primeiros passos para rodar o projeto
 1. Clonar ou baixar o repositório do [projeto](https://github.com/oxyps/loss-communication-back);
 
-1. Certificar-se de que já possui o gerenciador de pacotes [pip](https://pip.pypa.io/en/stable/installing/) instalado, utlizando o comando no terminal:
+1. Certificar-se de que já possui a linguagem [Python](https://www.python.org/downloads/) e o gerenciador de pacotes [pip](https://pip.pypa.io/en/stable/installing/) instalado, utlizando o comando no terminal:
 	``` shell
 		> pip --version
 	```
@@ -29,8 +29,8 @@
 		> pipenv install --dev
 	```
 
-1. Esta API utiliza uma biblioteca de geo-referenciamento para auxiliar na parte de localização das lavouras, sendo assim pode ser que seja necessário instalar algumas bibliotecas auxiliares para ser possível rodar o projeto em desenvolvimento.
-Caso o erro `Could not find gdal-config. Make sure you have installed the GDAL native library and development headers.` seja apresentado, é possível baixar as dependência faltantes pelo comando (Linux):
+1. Esta API utiliza uma biblioteca de geo-referenciamento para auxiliar na parte de localização das lavouras, sendo assim pode ser que seja necessário instalar algumas bibliotecas extras para ser possível rodar o projeto em desenvolvimento.
+Caso o erro `Could not find gdal-config. Make sure you have installed the GDAL native library and development headers.` seja apresentado, é possível baixar essas dependências faltantes, utilizando o comando (Linux):
 	``` shell
 		> sudo apt install -y gdal-bin libgdal-dev libgeos-dev libproj-dev
 	```
@@ -42,7 +42,7 @@ Caso o erro `Could not find gdal-config. Make sure you have installed the GDAL n
 		> CREATE DATABASE loss_communication_db;
 	```
 
-1. Dentro do diretório raíz `./loss-communication-back`, rodar as `migrations` para gerar o banco de dados:
+1. Dentro do diretório raíz `./loss-communication-back`, rodar as `migrations` para gerar as tabelas do banco de dados:
 	``` shell
 		> python manage.py migrate
 	```
