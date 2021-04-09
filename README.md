@@ -52,6 +52,11 @@ Caso o erro `Could not find gdal-config. Make sure you have installed the GDAL n
 		> python manage.py runserver
 	```
 
+1. Realizar os passos do [frontend](https://github.com/Oxyps/loss-communication-front):
+	``` shell
+		> python manage.py runserver
+	```
+
 
 ## Rotas
 
