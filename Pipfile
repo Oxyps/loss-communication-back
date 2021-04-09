@@ -11,6 +11,7 @@ django-cpf = "*"
 gdal = "*"
 django-cors-headers = "*"
 django-filter = "*"
+django-heroku = "*"
 
 [dev-packages]
 
