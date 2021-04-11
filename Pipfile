@@ -10,6 +10,8 @@ mysqlclient = "*"
 django-cpf = "*"
 django-cors-headers = "*"
 django-filter = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 
