@@ -10,7 +10,6 @@ mysqlclient = "*"
 django-cpf = "*"
 django-cors-headers = "*"
 django-filter = "*"
-gdal = "*"
 
 [dev-packages]
 
